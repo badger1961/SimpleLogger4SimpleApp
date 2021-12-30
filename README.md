@@ -1,7 +1,7 @@
 # SimpleLogger4SimpleApp
 Sometimes we create simple application and we need to use very simple logger in this case. This repository contains two files tha can be used in this case
 Usage:
-
+```
 #include <stdio.h>
 #include "log.h"
 
@@ -19,6 +19,7 @@ int main(void)
     INFO("%s", "Game Ended");
     stop_logging();
 }
+```
 
 These files were checked on Ubuntu 20.04 with GCC compiler
 
