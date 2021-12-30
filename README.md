@@ -1,5 +1,5 @@
 # SimpleLogger4SimpleApp
-Sometimes we read simple application and we need to use very simple logger in this case. This repository contains two files tha can be used in this case
+Sometimes we create simple application and we need to use very simple logger in this case. This repository contains two files tha can be used in this case
 Usage:
 
 #include <stdio.h>
