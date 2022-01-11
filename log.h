@@ -1,17 +1,3 @@
-//-------------------------------------------------------------------------------------------------
-// <copyright file="log.h" company="House of Badger">
-// Copyright (c) EMC Corporation. All rights reserved.
-// </copyright>
-// History
-// ------------------------------------
-// Date       Who     Info
-// ------------------------------------
-// 06/20/2013 Alexander Gorlov initial version
-//-------------------------------------------------------------------------------------------------
-
-//TODO section : support multi thread
-//TODO section : internal buffer using via special thread
-
 #ifndef AAG031_LOGGER_H__
 #define AAG031_LOGGER_H__
 

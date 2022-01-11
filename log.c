@@ -19,6 +19,7 @@
 #include <errno.h>
 #define LOG_LIB_MAIN 1
 #include "log.h"
+#undef  LOG_LIB_MAIN 
 
 /* client API
    start logging session
@@ -68,14 +69,12 @@ int write_msg_impl(FILE * stream, const char *const fmt_str, const t_log_level r
                           const char *const func_name, const int nline, ...) {
   va_list ap;
   int rc; // function return code
-
   if (r_log_level > log_level) {
     return LOG_OP_RC_SUCCESS;
   }
 
   char record[MAX_LOG_RECORD_SIZE];
   create_log_record(&record[0], r_log_level, file_name, func_name, nline);
-
   rc = fprintf(stream, "%s ", record);
   if (rc < 0) {
     printf("Cannot save record in log");
@@ -101,17 +100,17 @@ void create_log_record(char * record, const t_log_level r_log_level, const char 
   timeval = time(NULL);
   time_str = ctime(&timeval);
   time_str [strlen(time_str)-1] = '\0';
-  char *file_name_short = basename((char *)file_name);
-
+  char * last_slash = strrchr(file_name, '/');
+  char *file_name_short = last_slash + 1;
   snprintf(record, MAX_LOG_RECORD_SIZE,  "%s : %s ==>  %s:%s:%d ", time_str, record_prefix, file_name_short, func_name, nline);
   return;
 }
 
 
 void set_log_level(const t_log_level p_log_level) {
-  INFO("Current log level %d\n", log_level);
+  SL4SA_INFO("Current log level %d\n", log_level);
   log_level = p_log_level;
-  INFO("Current log level %d\n", log_level);
+  SL4SA_INFO("Current log level %d\n", log_level);
 }
 
 char *get_record_prefix(t_log_level level) { return PREFIX_LOG_RECORD[level]; }
